@@ -1,0 +1,35 @@
+
+<%- include("partials/header", {quote : "“Successful blogging is not about one time hits. It’s about building a loyal following over time.”~David Aston"} ); -%>
+    <h1 class="titles">Home</h1>
+    <p class="contents"> <%= startingContent %> </p>
+
+
+<%   if(posts.length===1 && posts[0].title === "Your Blog Title") { %>
+
+       <h1 class="titles blogTitle"><%=posts[0].title%></h1>
+       <h4 class="contents">
+         <strong>
+           <%=posts[0].content%>
+         </strong>
+       </h4>
+       <img src="https://media.giphy.com/media/QAggBLR49UPVvRdi5m/giphy.gif" alt="gif" height="170">
+
+  <% } else { %>
+     <%  posts.forEach(function(post){ %>
+
+       <h1 class="titles"><%=post.title%></h1>
+       <p class="contents">
+       <%=post.content.substring(0, 100) + " ..."%>
+       <a href="/posts/<%=post.title%>" class="readMore">Read More</a>
+       </p>
+       <br>
+       <!-- <p class="contents"><strong> Add '/compose' in the url above to compose a new blog.</strong></p>
+       <img src="https://media.giphy.com/media/hqfzJ6el5q5GoHoYO4/giphy.gif" alt="arrow" height="50"> -->
+
+       <% }) %>
+  <% } %>
+
+
+
+
+<%- include("partials/footer"); -%>
